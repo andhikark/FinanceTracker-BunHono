@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Transaction {
+  id          Int                  @id @default(autoincrement())
+  amount      Float                @db.Float
+  type        Transaction_type
+  category    Transaction_category
+  description String?              @db.Text
+  date        DateTime?            @default(now()) @db.Timestamp(0)
+  userId      Int
+  User        User                 @relation(fields: [userId], references: [id], onUpdate: Restrict, map: "Transaction_ibfk_1")
+
+  @@index([userId], map: "userId")
+}
+
+model User {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique(map: "email") @db.VarChar(255)
+  password    String        @db.VarChar(255)
+  name        String        @db.VarChar(255)
+  Transaction Transaction[]
+}
+
+enum Transaction_type {
+  INCOME
+  EXPENSE
+}
+
+enum Transaction_category {
+  FOOD
+  TRANSPORTATION
+  ENTERTAINMENT
+  SHOPPING
+  UTILITIES
+  OTHER
+  }
