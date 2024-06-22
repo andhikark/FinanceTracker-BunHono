@@ -3,9 +3,12 @@ import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import transaction from './routes/transaction.routes';
 import auth from './routes/auth.routes';
+import { cors } from 'hono/cors';
 
 
 const app = new Hono({ strict: false });
+
+app.use('*', cors({ origin: '*' }));
 app.use(logger());
 app.get('/', (c) =>
 	c.json({
