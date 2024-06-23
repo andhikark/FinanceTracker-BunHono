@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run index.ts",
+    "prisma": "bunx prisma db pull && bunx prisma generate",
     "dev": "bun run --watch index.ts"
   },
   "devDependencies": {
@@ -16,10 +17,14 @@
   "dependencies": {
     "@prisma/client": "5.14.0",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
-    "hono": "^4.4.0",
+    "dotenv": "^16.4.5",
+    "firebase": "^10.12.2",
+    "hono": "^4.4.7",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "prisma": "^5.14.0"
   }
 }

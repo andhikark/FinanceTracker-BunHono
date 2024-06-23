@@ -4,6 +4,7 @@ import editTransaction from "../controllers/Transaction/Transactions/editTransac
 import CreateTransaction from "../controllers/Transaction/Transactions/createTransaction";
 import deleteTransaction from "../controllers/Transaction/Transactions/deleteTransaction";
 import getUserName from "../controllers/Transaction/getUserName";
+import uploadImage from "../controllers/upload";
 
 
 
@@ -15,6 +16,7 @@ transaction.get("/searchUser",getUserName );
 transaction.post("/editTransaction", editTransaction);
 transaction.post("/createTransaction", CreateTransaction);
 transaction.delete("/deleteTransaction/:id", deleteTransaction);
+transaction.post("/upload",uploadImage)
 
 
 export default transaction;

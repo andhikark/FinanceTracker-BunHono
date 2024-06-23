@@ -40,4 +40,4 @@ enum Transaction_category {
   SHOPPING
   UTILITIES
   OTHER
-  }
+}
